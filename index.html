@@ -268,6 +268,86 @@ body.side-open .side-scrim{opacity:1;pointer-events:auto}
   .btn{padding:8px 14px}
   input[type=checkbox]{width:20px;height:20px}
 }
+
+/* full stats sheet */
+body.noscroll{overflow:hidden}
+.soft{color:var(--soft);font-weight:500}
+.acct .open-stats{display:flex;justify-content:space-between;align-items:center;width:100%;border:1px solid var(--line);background:var(--fill);border-radius:12px;padding:10px 12px;font-size:13px;font-weight:600;min-height:44px}
+.acct .open-stats span:last-child{color:var(--soft);font-weight:500}
+.acct.tap{cursor:pointer}
+.sheet{position:fixed;inset:0;z-index:40;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;animation:shin .22s ease-out}
+@keyframes shin{from{transform:translateY(24px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+.sh-h{position:sticky;top:0;z-index:2;display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(18px);backdrop-filter:saturate(1.4) blur(18px);border-bottom:1px solid var(--line)}
+.sh-h b{font-size:16px}
+.sh-x{width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--fill);font-size:24px;line-height:1;display:grid;place-items:center;padding-bottom:3px}
+.sh-b{max-width:760px;margin:0 auto;padding:16px 16px calc(40px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:22px}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tile{background:var(--fill);border-radius:12px;padding:10px 11px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.tile b{font-size:18px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tile span{font-size:11px;color:var(--soft);line-height:1.3}
+.tile i{font-style:normal;display:block;opacity:.8}
+.best{border:1px solid var(--ink);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.best b{font-size:20px;letter-spacing:-.01em}
+.best p{margin:0;font-size:13px;color:var(--ink2);line-height:1.45}
+.ssec{display:flex;flex-direction:column}
+.ssec h3{font-size:15px;margin:0 0 8px;letter-spacing:-.01em}
+.sec-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.sec-row h3{margin:0}
+.ins{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.ins li{font-size:13.5px;line-height:1.45;padding-left:14px;position:relative;color:var(--ink2)}
+.ins li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:9px;background:var(--ink)}
+.fine{font-size:11.5px;color:var(--soft);margin:2px 0 0;line-height:1.4}
+.seg{display:inline-flex;background:var(--fill);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:none;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:600;color:var(--soft);min-height:32px}
+.seg button.on{background:var(--bg);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.bars{display:flex;align-items:stretch;gap:2px;height:132px}
+.bar{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:0;padding:0}
+.bv{font-size:9.5px;color:var(--soft);height:12px;white-space:nowrap;overflow:visible}
+.bars:not(:has(.bar:nth-child(13))) .bv{font-size:10.5px}
+.bars:has(.bar:nth-child(13)) .bv{visibility:hidden}
+.bars:has(.bar:nth-child(13)) .bar.hi .bv{visibility:visible}
+.bt{flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center}
+.bt span{display:block;width:100%;max-width:26px;background:var(--ink);border-radius:4px 4px 0 0;min-height:0}
+.bar.thin .bt span{opacity:.3}
+.bar.hi .bt span{opacity:1}
+.bar.hi .bv{color:var(--ink);font-weight:700}
+.bar.sel .bt span{outline:2px solid var(--soft);outline-offset:1px}
+.bar.nil .bt::after{content:"";width:60%;height:2px;background:var(--line);border-radius:2px}
+.bk{font-size:10px;color:var(--soft);height:12px;white-space:nowrap}
+.heat{display:grid;grid-template-columns:34px repeat(4,minmax(0,1fr));gap:3px}
+.hh{font-size:10.5px;font-weight:600;text-align:center;color:var(--ink2);line-height:1.2;padding-bottom:2px}
+.hh i{display:block;font-style:normal;font-weight:500;color:var(--soft);font-size:9.5px}
+.hd{font-size:11px;color:var(--soft);display:flex;align-items:center}
+.hc{height:40px;border:0;border-radius:6px;background:color-mix(in srgb,var(--ink) calc(var(--a)*100%),var(--fill));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0}
+.hc b{font-size:11.5px;color:var(--ink)}
+.hc i{font-style:normal;font-size:9px;color:var(--ink);opacity:.75}
+.hc.dk b,.hc.dk i{color:var(--bg)}
+.hc.nil{background:var(--fill)}
+.hc.sel{outline:2px solid var(--soft);outline-offset:1px}
+.tip{margin-top:10px;font-size:12.5px;min-height:18px;color:var(--ink);font-weight:600}
+.ssec .tiles{margin-top:14px}
+.sgrp{display:flex;flex-direction:column;gap:2px;margin-bottom:14px}
+.sgrp .eyebrow{margin-bottom:4px}
+.srow{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:7px 0;border-bottom:1px solid var(--line)}
+.srow:last-child{border-bottom:0}
+.hbar{display:grid;grid-template-columns:minmax(0,1.1fr) 1fr 38px;gap:8px;align-items:center;font-size:12.5px;padding:4px 0}
+.hbar>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hbar>span:last-child{text-align:right;color:var(--soft)}
+.ht{height:8px;background:var(--fill);border-radius:4px;overflow:hidden}
+.ht span{display:block;height:100%;background:var(--ink);border-radius:4px}
+.plist{display:flex;flex-direction:column}
+.prow{display:grid;grid-template-columns:minmax(0,1fr) 74px;gap:4px 12px;padding:11px 0;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}
+.pt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pd{font-size:11px;color:var(--soft)}
+.pc{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.pv b{font-size:15px}
+.pm{width:100%;height:4px;background:var(--fill);border-radius:3px;overflow:hidden}
+.pm span{display:block;height:100%;background:var(--ink)}
+.pstats{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--soft)}
+@media (min-width:700px){.tiles{grid-template-columns:repeat(5,minmax(0,1fr))}.bars{height:160px}}
+
 </style>
 </head>
 <body>
@@ -605,19 +685,117 @@ function analytics(){
     if(x.week){const d=(k)=>{const c=x.week[k],p=(x.prevWeek||{})[k];if(p==null||c==null||p===0)return "";const ch=Math.round((c-p)/p*100);return `<span class="delta ${ch>=0?"up":"down"} num">${ch>=0?"↑":"↓"} ${Math.abs(ch)}%</span>`;};
       wk=`<div class="stats">${[["reach","Reach"],["views","Views"],["profileViews","Profile visits"],["interactions","Interactions"]].map(([k,l])=>`<div class="s"><span class="eyebrow">${l} · 7d</span><span class="num" style="font-weight:700">${nf(x.week[k])} ${d(k)}</span></div>`).join("")}</div>`;}
     const tops=(x.top||[]).slice(0,4).map(t=>`<li><span>${t.url?`<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.title)}</a>`:esc(t.title)}</span><span class="num" style="color:var(--soft);white-space:nowrap">${t.views!=null?nf(t.views)+" views":nf(t.likes)+" likes"}</span></li>`).join("");
-    return `<div class="acct">
+    const hasStats=state.stats&&state.stats[x.id];
+    return `<div class="acct ${hasStats?"tap":""}" ${hasStats?`data-stats="${esc(x.id)}"`:""}>
       <div class="acct-h"><b>${esc(x.platform)} <span style="font-weight:500;color:var(--soft)">${esc(x.handle)}</span></b><span class="tag">${esc(x.brand)}</span></div>
       <div class="stats"><div class="s"><span class="big-n num">${nf(x.followers)}</span><span class="eyebrow">${esc(x.followersLabel)}</span></div>
         <div class="s"><span class="num" style="font-weight:700;font-size:16px">${nf(x.total)}</span><span class="eyebrow">${esc(x.totalLabel)}</span></div>
         <div class="s"><span class="num" style="font-weight:700;font-size:16px">${ago==null?"—":ago===0?"Today":ago+"d ago"}</span><span class="eyebrow">Last post</span></div></div>
       ${goal}${wk}
       <div class="note">${esc(x.note||"")}</div>
+      ${hasStats&&state.stats[x.id].best?`<div class="kv"><span class="eyebrow">Best time to post</span><span style="font-size:13px;font-weight:600">${esc(state.stats[x.id].best.when)}</span></div>`:""}
       ${tops?`<div><div class="eyebrow" style="margin-bottom:4px">Top posts</div><ul class="tops">${tops}</ul></div>`:""}
+      ${hasStats?`<button class="open-stats" data-stats="${esc(x.id)}"><span>Full stats</span><span>${nf(state.stats[x.id].count)} posts →</span></button>`:""}
     </div>`;};
   const order=["Lone Doe","Lone Studios"];
   $("analytics").innerHTML=`${moves?`<div class="eyebrow" style="margin-bottom:8px">This week's moves</div><div class="moves">${moves}</div>`:""}
     ${order.map(b=>{const xs=(a.accounts||[]).filter(x=>x.brand===b);return xs.length?`<div class="eyebrow" style="margin:6px 0 8px">${b}</div><div class="accts" style="margin-bottom:14px">${xs.map(card).join("")}</div>`:"";}).join("")}`;
+  $("analytics").onclick=e=>{if(e.target.closest("a"))return;const el=e.target.closest("[data-stats]");if(el)openStats(el.dataset.stats);};
 }
+/* ---------- Full stats sheet ---------- */
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function sd(d,yr){const [y,m,dd]=d.slice(0,10).split("-");return (+dd)+" "+MON[+m-1]+(yr?" ’"+y.slice(2):"");}
+const DAYS=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+const BLOCKS=[["Morning","6am–12",6,12],["Midday","12–5pm",12,17],["Evening","5–9pm",17,21],["Late","9pm–6am",21,30]];
+const st$={id:null,sort:"new",show:20,metric:"med"};
+function med(a){if(!a.length)return 0;const s=[...a].sort((x,y)=>x-y),m=s.length>>1;return s.length%2?s[m]:Math.round((s[m-1]+s[m])/2);}
+function hr12(h){return h===0?"12am":h<12?h+"am":h===12?"12pm":(h-12)+"pm";}
+function postUrl(x,p){if(!p.url)return "";if(/^https?:/.test(p.url))return p.url;
+  if(x.platform==="YouTube")return "https://youtu.be/"+p.url;
+  if(x.platform==="TikTok")return "https://www.tiktok.com/"+x.handle+"/video/"+p.url;
+  return "https://www.instagram.com/p/"+p.url+"/";}
+function pdate(d){const [a,b]=d.split("T");const dt=new Date(a+"T00:00:00Z");const h=+b.slice(0,2),m=b.slice(3,5);
+  return new Intl.DateTimeFormat("en-AU",{timeZone:"UTC",weekday:"short",day:"numeric",month:"short",year:"2-digit"}).format(dt)+" · "+(h%12||12)+":"+m+(h<12?"am":"pm");}
+function eng(p){return p.v?((p.l||0)+(p.c||0)+(p.s||0)+(p.sv||0))/p.v*100:0;}
+function bars(items,{label,val,sub,hi}){ // items: [{k,v,n}]
+  const solid=items.filter(i=>i.n>=3),mx=Math.max(1,...(solid.length>=3&&items.some(i=>i.n<3&&i.n)?solid:items).map(i=>i.v));
+  return `<div class="bars" role="img">${items.map((i,ix)=>`<button class="bar ${i.n?"":"nil"} ${i.n&&i.n<3?"thin":""} ${hi===ix?"hi":""}" data-tip="${esc(i.tip||"")}" aria-label="${esc(i.tip||"")}">
+    <span class="bv num">${i.n?nf(i.v):""}</span><span class="bt"><span style="height:${i.n?Math.min(100,Math.max(3,Math.round(i.v/mx*100))):0}%"></span></span><span class="bk">${esc(i.k)}</span></button>`).join("")}</div>`;}
+function statsSheet(){
+  let root=$("stats-root");
+  if(!root){root=document.createElement("div");root.id="stats-root";document.body.appendChild(root);}
+  const id=st$.id; const x=id&&state.stats&&state.stats[id];
+  if(!x){root.innerHTML="";document.body.classList.remove("noscroll");return;}
+  document.body.classList.add("noscroll");
+  const P=x.posts||[]; const M=st$.metric; const agg=L=>M==="med"?med(L):(L.length?Math.round(L.reduce((a,b)=>a+b,0)/L.length):0);
+  const mName=M==="med"?"typical":"average";
+  // day + hour + heatmap from posts
+  const byD=DAYS.map(()=>[]),byH=Array.from({length:24},()=>[]),grid=DAYS.map(()=>BLOCKS.map(()=>[]));
+  P.forEach(p=>{const d=new Date(p.d.slice(0,10)+"T00:00:00Z").getUTCDay(),wd=(d+6)%7,h=+p.d.slice(11,13);
+    byD[wd].push(p.v);byH[h].push(p.v);const bi=BLOCKS.findIndex(b=>b[3]===30?(h>=21||h<6):(h>=b[2]&&h<b[3]));grid[wd][bi].push(p.v);});
+  const dI=byD.map((L,i)=>({k:DAYS[i],v:agg(L),n:L.length,tip:`${DAYS[i]}: ${L.length} post${L.length===1?"":"s"}, ${nf(agg(L))} ${mName} views`}));
+  const dN=dI.filter(i=>i.n>=5).length>=3?5:3;const bestD=dI.reduce((b,i,ix)=>i.n>=dN&&(b<0||i.v>dI[b].v)?ix:b,-1);
+  const hI=byH.map((L,i)=>({k:i%3===0?hr12(i).replace("am","a").replace("pm","p"):"",v:agg(L),n:L.length,tip:`${hr12(i)}: ${L.length} post${L.length===1?"":"s"}${L.length?`, ${nf(agg(L))} ${mName} views`:""}`}));
+  const hN=hI.some(i=>i.n>=5)?5:3;const bestH=hI.reduce((b,i,ix)=>i.n>=hN&&(b<0||i.v>hI[b].v)?ix:b,-1);
+  const gs=grid.flat().filter(L=>L.length>=3),gmax=Math.max(1,...(gs.length>=2?gs:grid.flat()).map(L=>L.length?agg(L):0));
+  const heat=`<div class="heat"><span></span>${BLOCKS.map(b=>`<span class="hh">${b[0]}<i>${b[1]}</i></span>`).join("")}
+    ${grid.map((row,wd)=>`<span class="hd">${DAYS[wd]}</span>${row.map((L,bi)=>{const v=L.length?agg(L):0;const a=L.length?Math.min(1,.12+.88*(v/gmax))*(L.length<3?.45:1):0;
+      return `<button class="hc ${L.length?"":"nil"} ${a>.5?"dk":""}" style="--a:${a.toFixed(2)}" data-tip="${DAYS[wd]} ${BLOCKS[bi][0].toLowerCase()}: ${L.length} post${L.length===1?"":"s"}${L.length?`, ${nf(v)} ${mName} views`:""}"><b class="num">${L.length?nf(v):""}</b><i class="num">${L.length?L.length+"×":""}</i></button>`;}).join("")}`).join("")}</div>`;
+  const tiles=[["Followers",x.followers],[x.platform==="YouTube"?"Total views":"Views (all posts)",x.totalViews],["Posts",x.count],["Typical post",x.med,"median views"],["Average post",x.avg,"mean views"],
+    x.engRate!=null?["Engagement",x.engRate+"%","per view"]:["Likes",x.likes],["Likes",x.likes],["Comments",x.comments]];
+  if(x.shares!=null)tiles.push(["Shares",x.shares]); if(x.saves!=null)tiles.push(["Saves",x.saves]);
+  const seen=new Set(); const tl=tiles.filter(t=>{if(seen.has(t[0]))return false;seen.add(t[0]);return true;});
+  const mon=(x.monthly||[]).map(m=>({k:MON[+m.m.slice(5,7)-1],v:m.v,n:m.n,tip:`${MON[+m.m.slice(5,7)-1]} ’${m.m.slice(2,4)}: ${m.n} post${m.n===1?"":"s"}, ${nf(m.v)} views`}));
+  const monPosts=(x.monthly||[]).map(m=>({k:"",v:m.n,n:m.n,tip:`${MON[+m.m.slice(5,7)-1]} ’${m.m.slice(2,4)}: ${m.n} post${m.n===1?"":"s"}`}));
+  const fmts=(x.formats||[]).length>1?`<div class="sgrp"><div class="eyebrow">By format</div>${x.formats.map(f=>`<div class="srow"><span>${esc(f.type)} <span class="soft num">· ${f.n}</span></span><span class="num"><b>${nf(f.avg)}</b> avg views</span></div>`).join("")}</div>`:"";
+  const lens=(x.lengths||[]).length>1?`<div class="sgrp"><div class="eyebrow">By length</div>${x.lengths.map(l=>`<div class="srow"><span>${esc(l.b)} <span class="soft num">· ${l.n}</span></span><span class="num"><b>${nf(l.med)}</b> typical views</span></div>`).join("")}</div>`:"";
+  const tags=(x.tags||[]).length?`<div class="sgrp"><div class="eyebrow">Hashtags (used 2+ times)</div>${x.tags.slice(0,8).map(t=>`<div class="srow"><span>#${esc(t.tag)} <span class="soft num">· ${t.n}</span></span><span class="num"><b>${nf(t.avg)}</b> avg views</span></div>`).join("")}</div>`:"";
+  const L30=x.last30&&Object.keys(x.last30).length?`<section class="ssec"><h3>Last 30 days</h3><div class="tiles">${[["reach","Accounts reached"],["views","Views"],["profile_views","Profile visits"],["accounts_engaged","Accounts engaged"],["total_interactions","Interactions"],["profile_links_taps","Link taps"]].filter(([k])=>x.last30[k]!=null).map(([k,l])=>`<div class="tile"><b class="num">${nf(x.last30[k])}</b><span>${l}</span></div>`).join("")}</div>
+    ${(x.reachDaily||[]).length?`<div class="eyebrow" style="margin:14px 0 6px">Daily reach</div>${bars(x.reachDaily.map((r,i,a)=>({k:i===0||i===a.length-1||i===Math.floor(a.length/2)?sd(r.d):"",v:r.v,n:3,tip:`${fmtDate(r.d)}: ${r.v} reached`})),{})}`:""}</section>`:"";
+  const demo=x.demo&&Object.keys(x.demo).length?`<section class="ssec"><h3>Your audience</h3>${[["age","Age"],["country","Country"],["city","City"],["gender","Gender"]].filter(([k])=>x.demo[k]).map(([k,l])=>{const tot=Math.max(x.followers||0,x.demo[k].reduce((s,r)=>s+r.v,0))||1;
+    const nm=v=>k==="gender"?({M:"Men",F:"Women",U:"Not specified"}[v]||v):k==="country"?(({AU:"Australia",IN:"India",ZA:"South Africa",MA:"Morocco",SY:"Syria",IQ:"Iraq",BR:"Brazil",PK:"Pakistan",US:"USA",NZ:"New Zealand",GB:"UK",PH:"Philippines"})[v]||v):v;
+    return `<div class="sgrp"><div class="eyebrow">${l}</div>${x.demo[k].slice(0,k==="city"?5:6).map(r=>`<div class="hbar"><span>${esc(nm(r.k))}</span><span class="ht"><span style="width:${Math.round(r.v/x.demo[k][0].v*100)}%"></span></span><span class="num">${Math.round(r.v/tot*100)}%</span></div>`).join("")}</div>`;}).join("")}
+    <p class="fine">Percentages are of all followers. Instagram only shares audience data once an account has 100+ followers.</p></section>`:"";
+  const sorted=[...P].sort(st$.sort==="views"?(a,b)=>b.v-a.v:st$.sort==="eng"?(a,b)=>eng(b)-eng(a):(a,b)=>b.d.localeCompare(a.d));
+  const topV=Math.max(1,...P.map(p=>p.v));
+  const rows=sorted.slice(0,st$.show).map(p=>{const u=postUrl(x,p);return `<a class="prow" ${u?`href="${esc(u)}" target="_blank" rel="noopener"`:""}>
+    <div class="pt"><span class="pd num">${pdate(p.d)}${p.type?` · ${esc(p.type)}`:""}${p.dur?` · ${p.dur>=60?Math.floor(p.dur/60)+"m "+(p.dur%60)+"s":p.dur+"s"}`:""}</span><span class="pc">${esc(p.t||"(no caption)")}</span></div>
+    <div class="pv"><b class="num">${nf(p.v)}</b><span class="pm"><span style="width:${Math.max(2,Math.round(p.v/topV*100))}%"></span></span></div>
+    <div class="pstats num"><span>♥ ${nf(p.l||0)}</span><span>💬 ${nf(p.c||0)}</span>${p.s!=null?`<span>↗ ${nf(p.s)}</span>`:""}${p.sv!=null?`<span>🔖 ${nf(p.sv)}</span>`:""}${p.r!=null?`<span>reach ${nf(p.r)}</span>`:""}${p.watch?`<span>${p.watch}s watch</span>`:""}<span>${eng(p).toFixed(1)}%</span></div></a>`;}).join("");
+  const gapNote=x.gapAvg!=null?`<div class="tiles"><div class="tile"><b class="num">${x.gapAvg}d</b><span>Avg gap between posts</span></div><div class="tile"><b class="num">${x.gapMax}d</b><span>Longest gap</span></div><div class="tile"><b class="num">${sd(x.last)}</b><span>Last post</span></div><div class="tile"><b class="num">${sd(x.first,1)}</b><span>First post</span></div></div>`:"";
+  root.innerHTML=`<div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(x.platform+" "+x.handle)} stats">
+   <header class="sh-h"><button class="sh-x" id="sh-x" aria-label="Close">‹</button><div><b>${esc(x.platform)}</b> <span class="soft">${esc(x.handle)}</span><div class="eyebrow">${esc(x.brand)} · updated ${fmtDate(x.updatedAt)}</div></div>
+     ${x.profile?`<a class="btn sm" href="${esc(x.profile)}" target="_blank" rel="noopener">Open</a>`:"<span></span>"}</header>
+   <div class="sh-b">
+    <div class="tiles">${tl.map(t=>`<div class="tile"><b class="num">${typeof t[1]==="string"?t[1]:nf(t[1])}</b><span>${t[0]}${t[2]?` <i>${t[2]}</i>`:""}</span></div>`).join("")}</div>
+    ${x.best?`<div class="best"><div class="eyebrow">Best time to post</div><b>${esc(x.best.when)}</b><p>${esc(x.best.why)}</p></div>`:""}
+    <section class="ssec"><h3>What the numbers say</h3><ul class="ins">${(x.insights||[]).map(i=>`<li>${esc(i)}</li>`).join("")}</ul></section>
+    <section class="ssec"><div class="sec-row"><h3>When you post</h3><div class="seg" id="sh-metric"><button data-m="med" class="${M==="med"?"on":""}">Typical</button><button data-m="avg" class="${M==="avg"?"on":""}">Average</button></div></div>
+      <p class="fine">Melbourne time · ${M==="med"?"typical (median) views, so one viral post doesn't skew it":"average views, so viral posts pull the numbers up"} · faded = fewer than 3 posts. Tap any bar or cell for details.</p>
+      <div class="eyebrow" style="margin:12px 0 6px">Day of week</div>${bars(dI,{hi:bestD})}
+      <div class="eyebrow" style="margin:16px 0 6px">Hour of day</div>${bars(hI,{hi:bestH})}
+      <div class="eyebrow" style="margin:16px 0 6px">Day × time of day</div>${heat}
+      <div class="tip" id="sh-tip" aria-live="polite">&nbsp;</div></section>
+    <section class="ssec"><h3>Over time</h3><div class="eyebrow" style="margin:4px 0 6px">Views per month (by upload month)</div>${bars(mon,{})}
+      <div class="eyebrow" style="margin:16px 0 6px">Posts per month</div>${bars(monPosts,{})}${gapNote}</section>
+    ${fmts||lens||tags?`<section class="ssec"><h3>What works</h3>${fmts}${lens}${tags}</section>`:""}
+    ${L30}${demo}
+    <section class="ssec"><div class="sec-row"><h3>All posts <span class="soft num">${P.length}</span></h3><div class="seg" id="sh-sort">${[["new","Newest"],["views","Views"],["eng","Engagement"]].map(([k,l])=>`<button data-s="${k}" class="${st$.sort===k?"on":""}">${l}</button>`).join("")}</div></div>
+      <div class="plist">${rows}</div>${P.length>st$.show?`<button class="btn" id="sh-more" style="align-self:center;margin-top:10px">Show all ${P.length}</button>`:""}
+      <p class="fine">Engagement % = (likes + comments + shares + saves) ÷ views. Views are lifetime totals, so older posts have had more time to build up.</p></section>
+   </div></div>`;
+  $("sh-x").onclick=()=>{st$.id=null;statsSheet();history.state&&history.state.sheet&&history.back();};
+  root.querySelector("#sh-sort").onclick=e=>{const b=e.target.closest("button");if(!b)return;st$.sort=b.dataset.s;statsSheet();};
+  root.querySelector("#sh-metric").onclick=e=>{const b=e.target.closest("button");if(!b)return;st$.metric=b.dataset.m;const sc=root.querySelector(".sheet").scrollTop;statsSheet();root.querySelector(".sheet").scrollTop=sc;};
+  const more=$("sh-more");if(more)more.onclick=()=>{st$.show=9999;const sc=root.querySelector(".sheet").scrollTop;statsSheet();root.querySelector(".sheet").scrollTop=sc;};
+  root.querySelectorAll("[data-tip]").forEach(el=>el.addEventListener("click",()=>{const t=el.dataset.tip;if(!t)return;
+    root.querySelectorAll(".sel").forEach(s=>s.classList.remove("sel"));el.classList.add("sel");
+    const sec=el.closest(".ssec");let tip=sec&&sec.querySelector(".tip");if(!tip&&sec){tip=document.createElement("div");tip.className="tip";sec.appendChild(tip);}if(tip)tip.textContent=t;}));
+}
+function openStats(id){st$.id=id;st$.sort="new";st$.show=20;statsSheet();const s=document.querySelector("#stats-root .sheet");if(s)s.scrollTop=0;try{history.pushState({sheet:1},"");}catch(e){}}
+window.addEventListener("popstate",()=>{if(st$.id){st$.id=null;statsSheet();}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&st$.id){st$.id=null;statsSheet();}});
+
 
 function lineTotal(q){return (q.lines||[]).reduce((s,l)=>s+Number(l.qty||1)*Number(l.price||0),0);}
 function quotes(){
@@ -761,7 +939,8 @@ function apply(){
   state.followups=list("followups");
   state.pricing=(RAW.settings||{}).pricing||null;
   state.analytics=(RAW.analytics||{}).summary||null;
-  renderAll(); badge();
+  state.stats=Object.assign({},RAW.stats||{});
+  renderAll(); badge(); if(st$.id)statsSheet();
   const z=$("zoomlink");if(z&&state.pricing&&state.pricing.zoomLink){z.href=state.pricing.zoomLink;z.hidden=false;}
 }
 async function loadAll(){
