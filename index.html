@@ -10,8 +10,8 @@
 <meta name="apple-mobile-web-app-title" content="Lone Studios">
 <meta name="theme-color" content="#0c0c0b">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=3">
+<link rel="icon" type="image/png" href="icon-192.png?v=3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -192,8 +192,8 @@ body{padding-top:env(safe-area-inset-top,0px)}
 .appbar{position:sticky;top:0;z-index:15;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 20px;padding-top:calc(12px + env(safe-area-inset-top,0px));margin-top:calc(-1 * env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:center}
 .appbar .ttl{font-weight:800;font-size:17px;letter-spacing:-.01em}
 .appbar .mark{font-size:10px}
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:18;background:var(--bg);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
-.nav button{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;font-size:10.5px;font-weight:600;color:var(--soft);border-radius:10px}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:18;background:var(--bg);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(6,1fr);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
+.nav button{background:none;border:0;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 1px;font-size:10px;white-space:nowrap;font-weight:600;color:var(--soft);border-radius:10px}
 .nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav button[aria-current="page"]{color:var(--ink)}
 .nav .dot{position:absolute;margin-left:18px;margin-top:-2px;width:8px;height:8px;border-radius:99px;background:var(--bad)}
@@ -348,6 +348,46 @@ body.noscroll{overflow:hidden}
 .pstats{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 12px;font-size:11.5px;color:var(--soft)}
 @media (min-width:700px){.tiles{grid-template-columns:repeat(5,minmax(0,1fr))}.bars{height:160px}}
 
+/* YouTube tab */
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:500;background:transparent;color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--chip);color:var(--chipText);border-color:var(--chip)}
+.cap{display:flex;flex-direction:column;gap:10px}
+.cap textarea{min-height:92px;font-size:16px}
+.cap-foot{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap}
+.yterr{font-size:12.5px;color:var(--bad);margin-right:auto}
+.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:12px}
+.idea{border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.idea.discuss{border-color:var(--ink)}
+.idea.using{opacity:.6}
+.idea-top{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.idea-top .saved{margin-left:auto}
+.idea-t{white-space:pre-wrap;word-break:break-word;font-size:14px}
+.vid{border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden}
+.vid[open]{border-color:var(--ink)}
+.vid summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.vid summary::-webkit-details-marker{display:none}
+.vt{font-weight:700;font-size:15px}
+.vsub{font-size:12px;color:var(--soft)}
+.vbody{padding:0 16px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.vbody{grid-template-columns:1fr}}
+.vbody .full{grid-column:1/-1}
+.vbody .checks{border-top:1px solid var(--line);padding-top:10px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.tcard{border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.tart svg{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.tbody{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.tbody h3{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.tmeta{display:flex;gap:6px;flex-wrap:wrap}
+.pair{margin:0;font-size:12.5px;color:var(--ink2)}
+.tips{margin:0;padding-left:18px;font-size:13px;display:flex;flex-direction:column;gap:4px}
+.checks{display:flex;flex-direction:column;gap:8px;font-size:13px}
+.checks label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.checks input{flex:0 0 auto;margin-top:1px}
+.checks label.done{color:var(--soft);text-decoration:line-through}
+details.more summary{cursor:pointer;font-size:12.5px;color:var(--soft)}
+details.more p{margin:8px 0 0;font-size:12.5px;color:var(--ink2)}
+.treset{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:10px}
 </style>
 </head>
 <body>
@@ -434,8 +474,81 @@ body.noscroll{overflow:hidden}
     </div>
   </section>
  </div>
+
+ <div class="tabpanel yt" data-tab="youtube" hidden>
+  <header class="top"><div><div class="mark">LONE DOE</div><h1 class="hello">YouTube</h1><div class="today" id="yt-sum"></div></div></header>
+  <section aria-labelledby="h-cap">
+    <div class="sec-head"><h2 id="h-cap">Quick capture</h2><span class="hint">Saved straight away. Mark anything “Talk later” to go through with Claude.</span></div>
+    <div class="panel cap">
+      <div class="chips" id="cap-types" role="group" aria-label="Idea type"></div>
+      <label for="cap-text" class="eyebrow">Your idea</label>
+      <textarea id="cap-text" placeholder="Type it before you forget…"></textarea>
+      <div class="cap-foot"><span class="yterr" id="cap-err" role="alert"></span><span class="saved" id="cap-saved"></span><button class="btn solid" id="cap-go" type="button">Save idea</button></div>
+    </div>
+  </section>
+  <section aria-labelledby="h-ideas">
+    <div class="sec-head"><h2 id="h-ideas">Ideas</h2><span class="hint" id="ideas-hint"></span></div>
+    <div class="chips" id="idea-filters" role="group" aria-label="Filter ideas"></div>
+    <div class="ideas" id="ideas"></div>
+  </section>
+  <section aria-labelledby="h-vids">
+    <div class="sec-head"><h2 id="h-vids">Videos</h2><button class="btn sm" id="vid-new" type="button">+ New video</button></div>
+    <p class="pair" style="margin:-4px 0 12px">Each video holds its concept, key parts, A/B titles and thumbnails, and a checklist before you publish.</p>
+    <div id="videos"></div>
+  </section>
+  <section aria-labelledby="h-thumbs" id="thumbs">
+    <div class="sec-head"><h2 id="h-thumbs">Thumbnail shots · Flex Up</h2><span class="hint">Second shooter captures these · tick them off as you go</span></div>
+    <div class="moves">
+      <div class="move"><span class="k">01</span><span>Get these in the first hour while the artist still has energy.</span></div>
+      <div class="move"><span class="k">02</span><span>Brief your second shooter with this page before you start.</span></div>
+      <div class="move"><span class="k">03</span><span>Leave empty space top right or top left for text and arrow.</span></div>
+    </div>
+    <div class="tgrid">
+      <article class="tcard">
+        <div class="tart"><svg viewBox="40 30 300 169" role="img"><title>Ground POV sketch</title><desc>You lie on the ground filming up at the artist, lit by a lantern on a tripod; arrow points at your camera.</desc><defs><marker id="ta1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect x="40" y="30" width="300" height="169" fill="#16181c"/><rect x="40" y="180" width="300" height="19" fill="#23252a"/><polygon points="98,106 98,120 222,142 214,58" fill="#f3c77a" opacity="0.16"/><line x1="90" y1="120" x2="74" y2="179" stroke="#8a8780" stroke-width="2" stroke-linecap="round"/><line x1="90" y1="120" x2="106" y2="179" stroke="#8a8780" stroke-width="2" stroke-linecap="round"/><line x1="90" y1="120" x2="90" y2="179" stroke="#8a8780" stroke-width="2" stroke-linecap="round"/><rect x="82" y="104" width="16" height="16" rx="2" fill="#f3c77a"/><circle cx="210" cy="70" r="10" fill="#e8e3d6"/><line x1="210" y1="80" x2="210" y2="135" stroke="#e8e3d6" stroke-width="5" stroke-linecap="round"/><line x1="210" y1="92" x2="232" y2="74" stroke="#e8e3d6" stroke-width="4" stroke-linecap="round"/><line x1="210" y1="94" x2="190" y2="112" stroke="#e8e3d6" stroke-width="4" stroke-linecap="round"/><line x1="210" y1="135" x2="198" y2="178" stroke="#e8e3d6" stroke-width="5" stroke-linecap="round"/><line x1="210" y1="135" x2="224" y2="178" stroke="#e8e3d6" stroke-width="5" stroke-linecap="round"/><circle cx="250" cy="171" r="7" fill="#8f8b82"/><line x1="258" y1="173" x2="322" y2="175" stroke="#8f8b82" stroke-width="6" stroke-linecap="round"/><line x1="262" y1="172" x2="256" y2="160" stroke="#8f8b82" stroke-width="3" stroke-linecap="round"/><rect x="244" y="150" width="16" height="10" rx="2" fill="#0d0e10" stroke="#f1efe8" stroke-width="1"/><rect x="249" y="145" width="6" height="5" fill="#f1efe8"/><text x="262" y="58" fill="#f1efe8" font-size="14" font-weight="600" font-family="Inter,Arial,sans-serif">Do this</text><text x="262" y="76" fill="#f1efe8" font-size="14" font-weight="600" font-family="Inter,Arial,sans-serif">instead</text><path d="M302 82 Q322 118 266 147" fill="none" stroke="#f1efe8" stroke-width="2" stroke-linecap="round" marker-end="url(#ta1)"/></svg></div>
+        <div class="tbody">
+          <div class="tmeta"><span class="pill solid">Version A</span><span class="pill ghost">Main thumbnail</span></div>
+          <h3>Ground POV · “Do this instead”</h3>
+          <p class="pair">Pairs with <b>How to Shoot a Run &amp; Gun Music Video (Full Breakdown)</b></p>
+          <div class="eyebrow">Setup</div>
+          <ul class="tips"><li>Lantern on a tripod about 2 m from the artist, off to one side, aimed at their face.</li><li>You lie on the ground at the artist's feet with the R8 and your widest lens pointing straight up.</li><li>Second shooter stands side-on at waist height, 2–3 m back, wide enough to fit the lantern, the artist and you.</li><li>Artist performs down into your lens with one arm up. Big energy sells it.</li></ul>
+          <div class="eyebrow">Tick off</div>
+          <div class="checks" data-card="a"><label><input type="checkbox" data-k="a1"> Wide with lantern, artist and you all in frame</label><label><input type="checkbox" data-k="a2"> Tighter version, camera clearly held up</label><label><input type="checkbox" data-k="a3"> Top right left empty for text</label><label><input type="checkbox" data-k="a4"> Grab your own ground-up frame for the video</label></div>
+          <details class="more"><summary>Settings and edit notes</summary><p>Expose for the lit face and let the background fall to black. Keep shutter at 1/125 or faster for sharp stills and raise ISO instead of slowing down. In the edit: dark grade, warm lantern glow, hand-drawn arrow, “Do this” lighter and “instead” heavier, no glow.</p></details>
+        </div>
+      </article>
+      <article class="tcard">
+        <div class="tart"><svg viewBox="40 30 300 169" role="img"><title>Over-the-shoulder sketch</title><desc>View from behind your shoulder at the camera screen showing the artist; arrow points at the screen.</desc><defs><marker id="ta2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><clipPath id="tclip2"><rect x="40" y="30" width="300" height="169"/></clipPath></defs><rect x="40" y="30" width="300" height="169" fill="#16181c"/><rect x="40" y="180" width="300" height="19" fill="#23252a"/><g opacity="0.45"><circle cx="205" cy="62" r="6" fill="#e8e3d6"/><line x1="205" y1="68" x2="205" y2="94" stroke="#e8e3d6" stroke-width="3" stroke-linecap="round"/></g><rect x="150" y="95" width="110" height="70" rx="3" fill="#0d0e10" stroke="#8a8780" stroke-width="1.5"/><rect x="154" y="99" width="102" height="62" fill="#3a3326"/><circle cx="205" cy="113" r="6" fill="#e8e3d6"/><line x1="205" y1="119" x2="205" y2="143" stroke="#e8e3d6" stroke-width="4" stroke-linecap="round"/><line x1="205" y1="125" x2="218" y2="113" stroke="#e8e3d6" stroke-width="3" stroke-linecap="round"/><line x1="205" y1="127" x2="194" y2="138" stroke="#e8e3d6" stroke-width="3" stroke-linecap="round"/><line x1="205" y1="143" x2="198" y2="157" stroke="#e8e3d6" stroke-width="4" stroke-linecap="round"/><line x1="205" y1="143" x2="212" y2="157" stroke="#e8e3d6" stroke-width="4" stroke-linecap="round"/><g clip-path="url(#tclip2)"><circle cx="300" cy="150" r="40" fill="#2a2c31"/><ellipse cx="300" cy="210" rx="80" ry="36" fill="#2a2c31"/></g><text x="56" y="58" fill="#f1efe8" font-size="14" font-weight="600" font-family="Inter,Arial,sans-serif">1 camera.</text><text x="56" y="76" fill="#f1efe8" font-size="14" font-weight="600" font-family="Inter,Arial,sans-serif">No crew</text><path d="M96 84 Q120 118 146 128" fill="none" stroke="#f1efe8" stroke-width="2" stroke-linecap="round" marker-end="url(#ta2)"/></svg></div>
+        <div class="tbody">
+          <div class="tmeta"><span class="pill solid">Version B</span><span class="pill ghost">A/B test</span></div>
+          <h3>Over the shoulder · “1 camera. No crew”</h3>
+          <p class="pair">Pairs with <b>Shooting a Run &amp; Gun Music Video (Full Process)</b></p>
+          <div class="eyebrow">Setup</div>
+          <ul class="tips"><li>Second shooter stands right behind your shoulder and focuses on your camera screen, not the artist.</li><li>Turn your screen brightness all the way up so it reads at thumbnail size.</li><li>Artist performs a few metres ahead so they're soft behind the screen.</li><li>Your shoulder and head sit dark in the bottom right corner.</li></ul>
+          <div class="eyebrow">Tick off</div>
+          <div class="checks" data-card="b"><label><input type="checkbox" data-k="b1"> Close on the screen, artist mid-move on it</label><label><input type="checkbox" data-k="b2"> Wider, showing your hands and the camera</label><label><input type="checkbox" data-k="b3"> Screen sharp, no banding or flicker</label><label><input type="checkbox" data-k="b4"> Top left left empty for text</label></div>
+          <details class="more"><summary>Settings and edit notes</summary><p>Use manual focus on the screen so autofocus doesn't jump to the artist. If the screen shows lines, change the second shooter's shutter speed slightly until they disappear. If the live frame isn't great, play back your best take on the screen and shoot that.</p></details>
+        </div>
+      </article>
+      <article class="tcard">
+        <div class="tart"><svg viewBox="40 30 300 169" role="img"><title>Skateboard dolly sketch</title><desc>You sit on a skateboard filming the artist walking; arrow points at the skateboard.</desc><defs><marker id="ta3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect x="40" y="30" width="300" height="169" fill="#16181c"/><rect x="40" y="180" width="300" height="19" fill="#23252a"/><circle cx="110" cy="70" r="10" fill="#e8e3d6"/><line x1="110" y1="80" x2="110" y2="135" stroke="#e8e3d6" stroke-width="5" stroke-linecap="round"/><line x1="110" y1="92" x2="94" y2="114" stroke="#e8e3d6" stroke-width="4" stroke-linecap="round"/><line x1="110" y1="92" x2="128" y2="110" stroke="#e8e3d6" stroke-width="4" stroke-linecap="round"/><line x1="110" y1="135" x2="94" y2="178" stroke="#e8e3d6" stroke-width="5" stroke-linecap="round"/><line x1="110" y1="135" x2="124" y2="178" stroke="#e8e3d6" stroke-width="5" stroke-linecap="round"/><line x1="205" y1="171" x2="257" y2="171" stroke="#8a8780" stroke-width="4" stroke-linecap="round"/><circle cx="213" cy="177" r="4" fill="#8a8780"/><circle cx="249" cy="177" r="4" fill="#8a8780"/><circle cx="238" cy="128" r="8" fill="#8f8b82"/><line x1="238" y1="136" x2="240" y2="166" stroke="#8f8b82" stroke-width="5" stroke-linecap="round"/><line x1="240" y1="166" x2="214" y2="160" stroke="#8f8b82" stroke-width="5" stroke-linecap="round"/><line x1="238" y1="144" x2="220" y2="140" stroke="#8f8b82" stroke-width="3" stroke-linecap="round"/><rect x="206" y="134" width="13" height="10" rx="2" fill="#0d0e10" stroke="#f1efe8" stroke-width="1"/><line x1="266" y1="160" x2="286" y2="160" stroke="#8a8780" stroke-width="1.5" stroke-linecap="round"/><line x1="270" y1="168" x2="294" y2="168" stroke="#8a8780" stroke-width="1.5" stroke-linecap="round"/><text x="258" y="58" fill="#f1efe8" font-size="14" font-weight="600" font-family="Inter,Arial,sans-serif">No dolly?</text><text x="258" y="76" fill="#f1efe8" font-size="14" font-weight="600" font-family="Inter,Arial,sans-serif">Use this</text><path d="M300 84 Q316 146 262 170" fill="none" stroke="#f1efe8" stroke-width="2" stroke-linecap="round" marker-end="url(#ta3)"/></svg></div>
+        <div class="tbody">
+          <div class="tmeta"><span class="pill ghost">Backup</span><span class="pill ghost">Only if you use it in the video</span></div>
+          <h3>Skateboard dolly · “No dolly? Use this”</h3>
+          <p class="pair">Save for a later test, or swap in if the skateboard shots come out great</p>
+          <div class="eyebrow">Setup</div>
+          <ul class="tips"><li>Flat, smooth ground away from traffic. Sit low on the board with the camera at chest height.</li><li>You need someone to push, so the artist or a third person pushes while your second shooter photographs.</li><li>Easiest version: stay still on the board, artist mid-stride, and add motion lines in the edit.</li><li>Second shooter side-on, low, wide enough to show the whole board.</li></ul>
+          <div class="eyebrow">Tick off</div>
+          <div class="checks" data-card="c"><label><input type="checkbox" data-k="c1"> Side-on wide with the board fully visible</label><label><input type="checkbox" data-k="c2"> Artist mid-stride, facing the camera</label><label><input type="checkbox" data-k="c3"> Film real skateboard tracking footage for the video</label></div>
+          <details class="more"><summary>Settings and edit notes</summary><p>For the moving version, the second shooter uses 1/250 or faster so you stay sharp. The arrow should point at the board, not you. Only use this thumbnail if the skateboard technique is shown in the video.</p></details>
+        </div>
+      </article>
+    </div>
+    <div class="treset"><span class="saved" id="thumb-count"></span><button class="btn sm" id="thumb-reset" type="button">Clear ticks</button></div>
+  </section>
+ </div>
 </div>
-<nav class="nav" aria-label="Sections"><button data-go="today" aria-current="page"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Today</span></button><button data-go="projects" aria-current="false"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg><span>Projects</span></button><button data-go="money" aria-current="false"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg><span>Money</span></button><button data-go="socials" aria-current="false"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-7M22 20H2"/></svg><span>Socials</span></button><button data-go="gear" aria-current="false"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="11" rx="2"/><path d="M17 11l4-2.5v8L17 14"/><circle cx="10" cy="12.5" r="2.5"/></svg><span>Crew & gear</span></button></nav>
+<nav class="nav" aria-label="Sections"><button data-go="today" aria-current="page"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg><span>Today</span></button><button data-go="projects" aria-current="false"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="10" rx="1.5"/><rect x="17" y="4" width="4" height="13" rx="1.5"/></svg><span>Projects</span></button><button data-go="money" aria-current="false"><svg viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5v5M18 9.5v5"/></svg><span>Money</span></button><button data-go="socials" aria-current="false"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V5M16 20v-7M22 20H2"/></svg><span>Socials</span></button><button data-go="gear" aria-current="false"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="14" height="11" rx="2"/><path d="M17 11l4-2.5v8L17 14"/><circle cx="10" cy="12.5" r="2.5"/></svg><span>Crew & gear</span></button><button data-go="youtube" aria-current="false"><svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.2 9.3v5.4l4.6-2.7z"/></svg><span>YouTube</span></button></nav>
 <button class="edge" id="edge" aria-controls="side" aria-expanded="false">Shortcuts</button>
 <div class="side-scrim" id="side-scrim"></div>
 <aside class="side" id="side" aria-label="Shortcuts">
@@ -449,6 +562,8 @@ body.noscroll{overflow:hidden}
  <button class="lnk" data-jump="money:h-pay"><span>Payments &amp; reminders</span><span>Money</span></button>
  <button class="lnk" data-jump="socials:h-an"><span>Analytics</span><span>Socials</span></button>
  <button class="lnk" data-jump="gear:h-lib"><span>Crew &amp; gear list</span><span>Crew</span></button>
+ <button class="lnk" data-jump="youtube:h-cap"><span>YouTube ideas</span><span>YouTube</span></button>
+ <button class="lnk" data-jump="youtube:thumbs"><span>Flex Up thumbnail shots</span><span>YouTube</span></button>
  <div class="grp">Open</div>
  <a href="https://drive.google.com/drive/folders/1HYHasxk-EPjQD2M9ZTAb1zRPJCvIyr_z" target="_blank" rel="noopener"><span>Shoot plan library</span><span>Slides ↗</span></a>
  <a href="https://www.canva.com/d/NWj1jILaQ3CDXYv" target="_blank" rel="noopener"><span>Invoice template</span><span>Canva ↗</span></a>
@@ -940,7 +1055,7 @@ function apply(){
   state.pricing=(RAW.settings||{}).pricing||null;
   state.analytics=(RAW.analytics||{}).summary||null;
   state.stats=Object.assign({},RAW.stats||{});
-  renderAll(); badge(); if(st$.id)statsSheet();
+  renderAll(); badge(); if(st$.id)statsSheet(); ytRender();
   const z=$("zoomlink");if(z&&state.pricing&&state.pricing.zoomLink){z.href=state.pricing.zoomLink;z.hidden=false;}
 }
 async function loadAll(){
@@ -966,7 +1081,7 @@ function badge(){
   if(n&&!d){d=document.createElement("span");d.className="dot";b.prepend(d);}else if(!n&&d)d.remove();
 }
 
-const TITLES={today:"Today",projects:"Projects",money:"Money",socials:"Socials",gear:"Crew & gear"};
+const TITLES={today:"Today",projects:"Projects",money:"Money",socials:"Socials",gear:"Crew & gear",youtube:"YouTube"};
 function go(tab){
   document.querySelectorAll(".tabpanel").forEach(p=>p.hidden=p.dataset.tab!==tab);
   document.querySelectorAll("[data-go]").forEach(b=>b.setAttribute("aria-current",b.dataset.go===tab?"page":"false"));
@@ -1023,6 +1138,134 @@ async function boot(){
 sb.auth.onAuthStateChange((ev,session)=>{if(ev==="SIGNED_IN"&&session&&!state.db)start();});
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&state.db)loadAll();});
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+/* ===== YouTube (Lone Doe) ===== */
+const YT_TYPES=[["video","Video idea"],["title","Title"],["thumbnail","Thumbnail"],["hook","Hook"],["other","Other"]];
+const YT_TNAME=Object.fromEntries(YT_TYPES);
+const YT_STAGES=["Idea","Planning","Shooting","Editing","Scheduled","Live"];
+const YT_CHECK=[["thumbs","Thumbnails A and B exported"],["titles","Titles and thumbnails set in Test & Compare"],["desc","Description: Linktree, friends' socials, dog's socials"],["credit","Artist or collaborators credited and linked"],["chapters","Chapters added"],["endscreen","End screen and cards"],["shorts","Shorts cut from the video"],["comment","Pinned comment posted"]];
+const yt={filter:"all",type:"video",open:new Set(),armed:null,seeding:false};
+const ytId=p=>p+"-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const ytFmt=iso=>{if(!iso)return"";const d=new Date(iso.length===10?iso+"T00:00:00":iso);return isNaN(d)?"":d.toLocaleDateString("en-AU",{day:"numeric",month:"short"});};
+const ytIdeas=()=>list("yt_ideas").sort((a,b)=>(b.createdAt||"").localeCompare(a.createdAt||""));
+const ytVideos=()=>list("yt_videos");
+function ytSummary(){
+  const I=ytIdeas(),V=ytVideos();
+  $("yt-sum").textContent=state.ready?`${I.length} ideas · ${I.filter(i=>i.status==="discuss").length} to talk about · ${V.filter(v=>v.stage!=="Live").length} videos in progress`:"Loading…";
+}
+function ytCapTypes(){$("cap-types").innerHTML=YT_TYPES.map(([k,n])=>`<button class="chip" type="button" data-t="${k}" aria-pressed="${yt.type===k}">${n}</button>`).join("");}
+function ytFilters(){
+  const f=[["all","All"],["video","Videos"],["title","Titles"],["thumbnail","Thumbnails"],["hook","Hooks"],["discuss","Talk later"]];
+  $("idea-filters").innerHTML=f.map(([k,n])=>`<button class="chip" type="button" data-f="${k}" aria-pressed="${yt.filter===k}">${n}</button>`).join("");
+}
+function ytIdeasRender(){
+  const all=ytIdeas();
+  const L=all.filter(i=>yt.filter==="all"||(yt.filter==="discuss"?i.status==="discuss":i.type===yt.filter));
+  $("ideas-hint").textContent=all.length?`${L.length} shown`:"";
+  if(!L.length){$("ideas").innerHTML=`<div class="empty">${!state.ready?"Loading…":all.length?"Nothing in this filter.":"No ideas yet. Your first one goes in the box above."}</div>`;return;}
+  $("ideas").innerHTML=L.map(i=>`<div class="idea ${i.status==="discuss"?"discuss":""} ${i.status==="using"?"using":""}" data-iid="${esc(i.id)}">
+    <div class="idea-top"><span class="tag">${esc(YT_TNAME[i.type]||"Idea")}</span>${i.status==="discuss"?'<span class="pill solid">Talk later</span>':""}${i.status==="using"?'<span class="pill ok">Using it</span>':""}<span class="saved">${ytFmt(i.createdAt)}</span></div>
+    <div class="idea-t">${esc(i.text)}</div>
+    <div class="row-actions">
+      <button class="btn sm" type="button" data-ia="discuss">${i.status==="discuss"?"Talked about it":"Talk later"}</button>
+      <button class="btn sm" type="button" data-ia="using">${i.status==="using"?"Not using":"Using it"}</button>
+      ${i.type==="video"&&!i.videoId?'<button class="btn sm" type="button" data-ia="promote">Make it a video</button>':""}
+      <button class="btn sm" type="button" data-ia="del">${yt.armed===i.id?"Tap again to delete":"Delete"}</button>
+    </div></div>`).join("");
+}
+function ytField(v,f,label,kind,full){
+  const val=esc(v[f]||""),fid=`v-${esc(v.id)}-${f}`;
+  const input=kind==="area"?`<textarea data-vf="${f}" id="${fid}">${val}</textarea>`:`<input type="${kind||"text"}" data-vf="${f}" id="${fid}" value="${val}">`;
+  return `<div class="kv ${full?"full":""}"><label class="eyebrow" for="${fid}">${label}</label>${input}</div>`;
+}
+function ytVideosRender(){
+  const el=$("videos");const ae=document.activeElement;
+  if(ae&&el.contains(ae)&&ae.tagName!=="BUTTON"&&ae.tagName!=="SUMMARY")return;
+  const vs=ytVideos().sort((a,b)=>(YT_STAGES.indexOf(a.stage)-YT_STAGES.indexOf(b.stage))||(a.publishDate||"9").localeCompare(b.publishDate||"9"));
+  if(!vs.length){el.innerHTML=`<div class="notice">${!state.ready?"Loading…":"No videos yet. Add one, or tap “Make it a video” on a video idea."}</div>`;return;}
+  el.innerHTML=vs.map(v=>{const ck=v.checklist||{};const n=YT_CHECK.filter(([k])=>ck[k]).length;
+    return `<details class="vid" data-vid="${esc(v.id)}" ${yt.open.has(v.id)?"open":""}>
+    <summary><div><div class="vt">${esc(v.title||"Untitled video")}</div><div class="vsub">${v.format?esc(v.format)+" · ":""}${v.publishDate?"Publish "+esc(ytFmt(v.publishDate))+" · ":""}Checklist ${n}/${YT_CHECK.length}</div></div><span class="pill ${v.stage==="Live"?"ok":"solid"}">${esc(v.stage||"Idea")}</span></summary>
+    <div class="vbody">
+      ${ytField(v,"title","Working title","text",true)}
+      <div class="kv"><label class="eyebrow" for="v-${esc(v.id)}-stage">Stage</label><select data-vf="stage" id="v-${esc(v.id)}-stage">${YT_STAGES.map(s=>`<option ${s===(v.stage||"Idea")?"selected":""}>${s}</option>`).join("")}</select></div>
+      ${ytField(v,"publishDate","Publish date","date")}
+      ${ytField(v,"format","Format","text",true)}
+      ${ytField(v,"concept","Concept","area",true)}
+      ${ytField(v,"hook","Hook (first 15 seconds)","area",true)}
+      ${ytField(v,"components","Key components and structure","area",true)}
+      ${ytField(v,"titleA","Title A","text")}
+      ${ytField(v,"titleB","Title B","text")}
+      ${ytField(v,"thumbA","Thumbnail A","text")}
+      ${ytField(v,"thumbB","Thumbnail B","text")}
+      ${ytField(v,"result","A/B test result","text",true)}
+      ${ytField(v,"notes","Notes","area",true)}
+      <div class="full checks"><div class="eyebrow" style="margin-bottom:4px">Before you publish</div>${YT_CHECK.map(([k,nm])=>`<label class="${ck[k]?"done":""}"><input type="checkbox" data-vc="${k}" ${ck[k]?"checked":""}> ${nm}</label>`).join("")}</div>
+      <div class="full row-actions"><button class="btn sm" type="button" data-vdel="1">${yt.armed===v.id?"Tap again to delete":"Delete video"}</button></div>
+    </div></details>`;}).join("");
+}
+function ytSeed(){
+  if(yt.seeding||!state.ready||(RAW.yt_meta||{}).seed)return;
+  yt.seeding=true;
+  const now=Date.now(),iso=k=>new Date(now-k*60000).toISOString();
+  save("yt_videos","run-and-gun-flex-up",{title:"How to Shoot a Run & Gun Music Video (Full Breakdown)",stage:"Shooting",format:"Tutorial + vlog · Flex Up music video",
+    concept:"Film the Flex Up music video run and gun style and show the whole process: pre-production and planning, the real shoot day as a vlog, then the edit, colour grade and a VFX breakdown. Melbourne shows up in the footage but stays out of the title.",
+    hook:"Open on the best finished shot from Flex Up, then cut to raw footage of me filming it. \"This is how I made this.\"",
+    components:"1. Hook (15–30s)\n2. Pre-production: concept, locations, shot list, gear, settings\n3. The shoot: vlog footage, explaining choices as I go\n4. Post: Premiere cut and colour grade with before/after\n5. VFX breakdown: raw plate to final, layer by layer\n6. Final result + link to the artist",
+    titleA:"How to Shoot a Run & Gun Music Video (Full Breakdown)",titleB:"Shooting a Run & Gun Music Video (Full Process)",
+    thumbA:"Ground POV with lantern · \"Do this instead\"",thumbB:"Over the shoulder monitor · \"1 camera. No crew\"",result:"",
+    notes:"Backup thumbnail: skateboard dolly, only if it's used in the video. Check whether Test & Compare can test title + thumbnail pairs; if not, test thumbnails first.",
+    checklist:{},createdAt:iso(0)},false);
+  ["$0 dolly: sitting in a trolley filming the artist walking, arrow at the trolley","Free VFX: glass or prism in front of the lens throwing light streaks, arrow at the prism","Look down: camera on the ground filming the artist's reflection in a puddle","Free key light: artist under a streetlight, arrow at the streetlight","$2 trick: camera spun on a string for a spinning shot","We got kicked out: security guard with a torch, arrow at the guard (only if it really happens)","No drone? Do this: filming from the top of a staircase looking down","Shoot through this: lens pressed against a chain-link fence","This was raw: split frame, flat ungraded vs final grade","Shot from here: tracking shot from a car boot (private car park, walking pace only)","Car headlights: No lights? Use this, arrow at the headlights","One torch from below: 1 torch. That's it","Wide lens, up close: lens inches from the artist's face"]
+    .forEach((t,k)=>save("yt_ideas","seed-t"+String(k+1).padStart(2,"0"),{type:"thumbnail",text:t,status:"new",createdAt:iso(k+1)},false));
+  save("yt_meta","seed",{done:true,at:new Date().toISOString()},false);
+}
+function ytRender(){if(!$("yt-sum"))return;ytSummary();ytIdeasRender();ytVideosRender();ytSeed();}
+$("cap-types").addEventListener("click",e=>{const b=e.target.closest("[data-t]");if(!b)return;yt.type=b.dataset.t;ytCapTypes();});
+$("cap-text").addEventListener("input",()=>{$("cap-err").textContent="";$("cap-saved").textContent="";});
+$("cap-go").addEventListener("click",async()=>{
+  const t=$("cap-text").value.trim();
+  if(!t){$("cap-err").textContent="Type an idea first";return;}
+  if(!state.db){$("cap-err").textContent="Sign in to save ideas";return;}
+  const btn=$("cap-go");btn.disabled=true;
+  const ok=await save("yt_ideas",ytId("i"),{type:yt.type,text:t,status:"new",createdAt:new Date().toISOString()},false);
+  btn.disabled=false;
+  if(ok){$("cap-text").value="";$("cap-saved").textContent="Saved";}else $("cap-err").textContent="Couldn't save. Check your connection and try again.";
+});
+$("idea-filters").addEventListener("click",e=>{const b=e.target.closest("[data-f]");if(!b)return;yt.filter=b.dataset.f;ytFilters();ytIdeasRender();});
+$("ideas").addEventListener("click",async e=>{
+  const b=e.target.closest("[data-ia]");if(!b)return;
+  const id=b.closest("[data-iid]").dataset.iid;const i=ytIdeas().find(x=>x.id===id);if(!i)return;const a=b.dataset.ia;
+  if(a==="discuss")save("yt_ideas",id,{status:i.status==="discuss"?"new":"discuss"},true);
+  else if(a==="using")save("yt_ideas",id,{status:i.status==="using"?"new":"using"},true);
+  else if(a==="promote"){const vid=ytId("v");yt.open.add(vid);await save("yt_videos",vid,{title:i.text.slice(0,90),stage:"Idea",concept:i.text,checklist:{},createdAt:new Date().toISOString()},false);save("yt_ideas",id,{status:"using",videoId:vid},true);}
+  else if(a==="del"){if(yt.armed!==id){yt.armed=id;ytIdeasRender();setTimeout(()=>{if(yt.armed===id){yt.armed=null;ytIdeasRender();}},3000);return;}yt.armed=null;remove("yt_ideas",id);}
+});
+const ytV=$("videos");
+ytV.addEventListener("toggle",e=>{const d=e.target;if(!d.dataset||!d.dataset.vid)return;if(d.open)yt.open.add(d.dataset.vid);else yt.open.delete(d.dataset.vid);},true);
+ytV.addEventListener("change",e=>{
+  const t=e.target;const box=t.closest("[data-vid]");if(!box)return;const id=box.dataset.vid;const v=ytVideos().find(x=>x.id===id);if(!v)return;
+  if(t.dataset.vc){t.blur();save("yt_videos",id,{checklist:Object.assign({},v.checklist||{},{[t.dataset.vc]:t.checked})},true);}
+  else if(t.dataset.vf){if(t.tagName==="SELECT")t.blur();save("yt_videos",id,{[t.dataset.vf]:t.value},true);}
+});
+ytV.addEventListener("focusout",()=>setTimeout(()=>{const ae=document.activeElement;if(!ae||!ytV.contains(ae))ytVideosRender();},0));
+ytV.addEventListener("click",e=>{
+  const b=e.target.closest("[data-vdel]");if(!b)return;const id=b.closest("[data-vid]").dataset.vid;
+  if(yt.armed!==id){yt.armed=id;ytVideosRender();setTimeout(()=>{if(yt.armed===id){yt.armed=null;ytVideosRender();}},3000);return;}
+  yt.armed=null;remove("yt_videos",id);
+});
+$("vid-new").addEventListener("click",()=>{if(!state.db)return;const vid=ytId("v");yt.open.add(vid);save("yt_videos",vid,{title:"Untitled video",stage:"Idea",checklist:{},createdAt:new Date().toISOString()},false);});
+(function(){
+  const KEY="lone-thumbs-flexup";let st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{};}catch(e){st={};}
+  const boxes=[...document.querySelectorAll('#thumbs .checks input')];
+  function paint(){let n=0;boxes.forEach(b=>{const on=!!st[b.dataset.k];b.checked=on;b.closest('label').classList.toggle('done',on);if(on)n++;});const c=$("thumb-count");if(c)c.textContent=n+" of "+boxes.length+" shots ticked";}
+  function store(){try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
+  boxes.forEach(b=>b.addEventListener('change',()=>{st[b.dataset.k]=b.checked;store();paint();}));
+  const r=$("thumb-reset");if(r)r.addEventListener('click',()=>{st={};store();paint();});
+  paint();
+})();
+ytCapTypes();ytFilters();ytRender();
+
 renderAll();
 boot();
 })();
